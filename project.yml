@@ -1,4 +1,4 @@
-name: InnovoprismiOS
+name: Innovoprism
 
 options:
   bundleIdPrefix: com.example
@@ -13,7 +13,7 @@ settings:
     CURRENT_PROJECT_VERSION: "1"
 
 targets:
-  InnovoprismiOS:
+  Innovoprism:
     type: application
     platform: iOS
     sources:
@@ -27,15 +27,14 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         TARGETED_DEVICE_FAMILY: "1,2"
-        # Unsigned CI build
         CODE_SIGNING_ALLOWED: NO
         CODE_SIGN_IDENTITY: ""
 
 schemes:
-  InnovoprismiOS:
+  Innovoprism:
     build:
       targets:
-        InnovoprismiOS: all
+        Innovoprism: all
     run:
       config: Debug
     archive:
