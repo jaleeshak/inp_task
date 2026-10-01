@@ -1,0 +1,43 @@
+# XcodeGen spec. The .xcodeproj is GENERATED from this file (on GitHub's Mac
+# runner, or on any Mac with `brew install xcodegen && xcodegen generate`),
+# so you never need Xcode to create the project by hand.
+name: Innovoprism
+options:
+  bundleIdPrefix: com.innovoprism
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+targets:
+  Innovoprism:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Innovoprism
+        excludes:
+          - "Info.plist"
+    settings:
+      base:
+        PRODUCT_NAME: Innovoprism
+        PRODUCT_BUNDLE_IDENTIFIER: com.innovoprism.app
+        INFOPLIST_FILE: Innovoprism/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: "NO"
+schemes:
+  Innovoprism:
+    build:
+      targets:
+        Innovoprism: all
+    run:
+      config: Debug
+    archive:
+      config: Release
