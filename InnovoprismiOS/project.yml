@@ -1,43 +1,58 @@
-# XcodeGen spec. The .xcodeproj is GENERATED from this file (on GitHub's Mac
-# runner, or on any Mac with `brew install xcodegen && xcodegen generate`),
-# so you never need Xcode to create the project by hand.
-name: Innovoprism
+name: inp_task
+
 options:
-  bundleIdPrefix: com.innovoprism
+  bundleIdPrefix: com.example
+  createIntermediateGroups: true
   deploymentTarget:
     iOS: "16.0"
-  createIntermediateGroups: true
+
 settings:
   base:
+    SWIFT_VERSION: "5.0"
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
-    SWIFT_VERSION: "5.0"
+
 targets:
-  Innovoprism:
+  inp_task:
     type: application
     platform: iOS
-    deploymentTarget: "16.0"
     sources:
-      - path: Innovoprism
-        excludes:
-          - "Info.plist"
+      - path: inp_task
     settings:
       base:
-        PRODUCT_NAME: Innovoprism
-        PRODUCT_BUNDLE_IDENTIFIER: com.innovoprism.app
-        INFOPLIST_FILE: Innovoprism/Info.plist
-        GENERATE_INFOPLIST_FILE: "NO"
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.inptask
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         TARGETED_DEVICE_FAMILY: "1,2"
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-        CODE_SIGN_STYLE: Automatic
-        ENABLE_PREVIEWS: "NO"
+        # Lets CI build without signing certificates
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGN_IDENTITY: ""
+
+  inp_taskTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: inp_taskTests
+    dependencies:
+      - target: inp_task
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.inptask.tests
+        GENERATE_INFOPLIST_FILE: YES
+
 schemes:
-  Innovoprism:
+  inp_task:
     build:
       targets:
-        Innovoprism: all
+        inp_task: all
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - inp_taskTests
     archive:
       config: Release
